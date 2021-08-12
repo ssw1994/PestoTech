@@ -7,7 +7,7 @@ import {
   selectedListType,
 } from "../../store/selectors/finder.selector";
 import "./grid-list.component.scss";
-export default function UserList() {
+export default function GridList() {
   const gridList = useSelector(filteredList);
   const listType = useSelector(selectedListType);
 
@@ -29,6 +29,9 @@ export default function UserList() {
             </div>
           );
         })}
+        {gridList.length === 0 ? (
+          <div className="message">No records found</div>
+        ) : null}
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ function isSortedArray(arr, n) {
 }
 
 export const filteredList = (state) => {
-  if (!state.finder.filters.key) {
+  if (!currentSearch(state)) {
     return finderList(state);
   } else {
     if (fullCheckRegex.test(state.finder.filters.key)) {
@@ -32,22 +32,33 @@ export const filteredList = (state) => {
       return finderList(state).filter((item) => {
         let nameCheck = false;
         if (selectedListType(state) === ListTypes.user) {
-          nameCheck = item.name.search(searchKey) >= 0;
+          nameCheck =
+            item.name.toLowerCase().search(searchKey.toLowerCase()) >= 0;
         } else {
-          nameCheck = item.company.search(searchKey) >= 0;
+          nameCheck =
+            item.company.toLowerCase().search(searchKey.toLowerCase()) >= 0;
         }
-        return nameCheck || item.location.search(searchKey) >= 0;
+        return (
+          nameCheck ||
+          item.location.toLowerCase().search(searchKey.toLowerCase()) >= 0
+        );
       });
     } else {
       const arr = currentSearch(state).split(" ");
       return finderList(state).filter((item) => {
         let path = [];
         if (selectedListType(state) === ListTypes.user) {
-          path = arr.map((key) => item.name.search(key));
+          path = arr.map((key) =>
+            item.name.toLowerCase().search(key.toLowerCase())
+          );
         } else {
-          path = arr.map((key) => item.company.search(key));
+          path = arr.map((key) =>
+            item.company.toLowerCase().search(key.toLowerCase())
+          );
         }
-        let locationPath = arr.map((key) => item.location.search(key));
+        let locationPath = arr.map((key) =>
+          item.location.toLowerCase().search(key.toLowerCase())
+        );
         if (
           path.findIndex((i) => i === -1) >= 0 &&
           locationPath.findIndex((i) => i === -1) >= 0
