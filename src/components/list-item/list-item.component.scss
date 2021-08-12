@@ -1,0 +1,13 @@
+.list-card {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--font-color);
+  color: var(--font-color);
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0 0 10px var(--header-color);
+}

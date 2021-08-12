@@ -1,0 +1,30 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  background-color: var(--header-color);
+  width: 100%;
+  padding: 25px;
+  .action-btns {
+    margin: 5px 15px;
+    button {
+      height: 30px;
+      margin: 5px;
+      border-radius: 5px;
+    }
+  }
+  .list-type {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.search-container > input {
+  width: 50%;
+  height: 30px;
+}
